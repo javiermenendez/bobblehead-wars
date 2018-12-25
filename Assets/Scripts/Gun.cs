@@ -37,14 +37,14 @@ public class Gun : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform launchPosition;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
-		
-	}
+    	
+    }
 	
-	// Update is called once per frame
-	void Update ()
+    // Update is called once per frame
+    void Update ()
     {
 		if (Input.GetMouseButtonDown(0))
         {
@@ -57,12 +57,24 @@ public class Gun : MonoBehaviour
         {
             CancelInvoke("fireBullet");
         }
-	}
+    }
+
+    void fireBulletWoOP()
+    {
+        GameObject bullet = Instantiate(bulletPrefab) as GameObject;
+
+        bullet.transform.position = launchPosition.position;
+        bullet.GetComponent<Rigidbody>().velocity = transform.parent.forward * 100;
+    }
 
     void fireBullet()
     {
-        GameObject bullet = Instantiate(bulletPrefab) as GameObject;
-        bullet.transform.position = launchPosition.position;
-        bullet.GetComponent<Rigidbody>().velocity = transform.parent.forward * 100;
+        GameObject bullet = ObjectPooler.SharedInstance.GetPooledObject();
+        if (bullet != null)
+        {
+            bullet.SetActive(true);
+            bullet.transform.position = launchPosition.position;
+            bullet.GetComponent<Rigidbody>().velocity = transform.parent.forward * 100;
+        }
     }
 }
