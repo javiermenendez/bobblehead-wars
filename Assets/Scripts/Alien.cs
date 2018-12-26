@@ -11,8 +11,14 @@ public class Alien : MonoBehaviour {
     private NavMeshAgent agent;
     private float navigationTime = 0;
 
-	// Use this for initialization
-	void Start () {
+    // Use this to ensure it is called when an object is reused
+    private void OnEnable()
+    {
+        
+    }
+
+    // Use this for initialization
+    void Start () {
         agent = GetComponent<NavMeshAgent>();
 	}
 	

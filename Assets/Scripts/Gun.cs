@@ -37,6 +37,12 @@ public class Gun : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform launchPosition;
 
+    // Use this to ensure it is called when an object is reused
+    private void OnEnable()
+    {
+        
+    }
+
     // Use this for initialization
     void Start ()
     {
@@ -59,17 +65,9 @@ public class Gun : MonoBehaviour
         }
     }
 
-    void fireBulletWoOP()
-    {
-        GameObject bullet = Instantiate(bulletPrefab) as GameObject;
-
-        bullet.transform.position = launchPosition.position;
-        bullet.GetComponent<Rigidbody>().velocity = transform.parent.forward * 100;
-    }
-
     void fireBullet()
     {
-        GameObject bullet = ObjectPooler.SharedInstance.GetPooledObject();
+        GameObject bullet = ObjectPooler.SharedInstance.GetPooledObject("Projectile");
         if (bullet != null)
         {
             bullet.SetActive(true);
