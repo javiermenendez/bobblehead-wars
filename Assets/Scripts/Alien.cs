@@ -14,12 +14,12 @@ public class Alien : MonoBehaviour {
     // Use this to ensure it is called when an object is reused
     private void OnEnable()
     {
-        
+        agent = GetComponent<NavMeshAgent>();
     }
 
     // Use this for initialization
     void Start () {
-        agent = GetComponent<NavMeshAgent>();
+
 	}
 	
 	// Update is called once per frame
@@ -37,6 +37,6 @@ public class Alien : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

@@ -81,19 +81,25 @@ public class GameManager : MonoBehaviour {
                         // grab the spawn point
                         GameObject spawnLocation = spawnPoints[spawnPoint];
                         // create an instance of alien prefab
-                        GameObject newAlien = Instantiate(alien) as GameObject;
-                        // position the alien in the spawn location
-                        newAlien.transform.position = spawnLocation.transform.position;
+                        GameObject newAlien = ObjectPooler.SharedInstance.GetPooledObject("Alien");
+
+                        if (newAlien != null)
+                        {
+                            newAlien.SetActive(true);
+                            // position the alien in the spawn location
+                            newAlien.transform.position = spawnLocation.transform.position;
+
+                            #region Set Alien target
+                            Alien alienScript = newAlien.GetComponent<Alien>();
+                            alienScript.target = player.transform;
+
+                            // Rotate towards target
+                            Vector3 targetRotation = new Vector3(player.transform.position.x, newAlien.transform.position.y, player.transform.position.z);
+                            newAlien.transform.LookAt(targetRotation);
+                            #endregion Set Alien target
+                        }
+
                         #endregion Spawn the alien
-
-                        #region Set Alien target
-                        Alien alienScript = newAlien.GetComponent<Alien>();
-                        alienScript.target = player.transform;
-
-                        // Rotate towards target
-                        Vector3 targetRotation = new Vector3(player.transform.position.x, newAlien.transform.position.y, player.transform.position.z);
-                        newAlien.transform.LookAt(targetRotation);
-                        #endregion Set Alien target
                     }
                 }
             }
