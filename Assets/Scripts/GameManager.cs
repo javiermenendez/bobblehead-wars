@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour {
     public GameObject player;
     public GameObject[] spawnPoints;
     public GameObject alien;
+    public GameObject upgradePrefab;
+    public Gun gun;
+    public float upgradeMaxTimeSpawn = 7.5f;
 
     public int maxAliensOnScreen;
     public int totalAliens;
@@ -17,17 +20,29 @@ public class GameManager : MonoBehaviour {
     private int aliensOnScreen = 0;
     private float generatedSpawnTime = 0;
     private float currentSpawnTime = 0;
+    private bool spawnedUpgrade = false;
+    private float actualUpgradeTime = 0;
+    private float currentUpgradeTime = 0;
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        // Determine the actual upgrade time (random)
+        actualUpgradeTime = Mathf.Abs(Random.Range(upgradeMaxTimeSpawn - 3.0f, upgradeMaxTimeSpawn));
+    }
 	
 	// Update is called once per frame
 	void Update () {
         // Accumulate the amount of time that’s passed between each frame update
         currentSpawnTime += Time.deltaTime;
+        currentUpgradeTime += Time.deltaTime;
 
+        spawnAlien();
+
+        spawnGunUpgrade();
+    }
+
+    private void spawnAlien()
+    {
         // Check if elapsed time is greater than the randomly generated
         if (currentSpawnTime > generatedSpawnTime)
         {
@@ -102,6 +117,30 @@ public class GameManager : MonoBehaviour {
                         #endregion Spawn the alien
                     }
                 }
+            }
+        }
+    }
+
+    private void spawnGunUpgrade()
+    {
+        if (currentUpgradeTime > actualUpgradeTime)
+        {
+            // After the random time period passes, this checks if the upgrade has already spawned.
+            if(!spawnedUpgrade)
+            {
+                // The upgrade will appear in one of the alien spawn points
+                int randomNumber = Random.Range(0, spawnPoints.Length - 1);
+                GameObject spawnLocation = spawnPoints[randomNumber];
+
+                // This section handles the business of spawning the upgrade and associating the gun with it.
+                GameObject upgrade = Instantiate(upgradePrefab) as GameObject;
+                Upgrade upgradeScript = upgrade.GetComponent<Upgrade>();
+                upgradeScript.gun = gun;
+                upgrade.transform.position = spawnLocation.transform.position;
+
+                // This informs the code that an upgrade has been spawned
+                spawnedUpgrade = true;
+                SoundManager.Instance.PlayOneShot(SoundManager.Instance.powerUpAppear);
             }
         }
     }

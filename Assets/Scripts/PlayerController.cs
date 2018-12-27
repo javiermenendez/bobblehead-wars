@@ -42,10 +42,16 @@ public class PlayerController : MonoBehaviour
     private CharacterController characterController;
     private Vector3 currentLookTarget = Vector3.zero;
 
+    // Use this to ensure it is called when an object is reused
+    private void OnEnable()
+    {
+        characterController = GetComponent<CharacterController>();
+    }
+
     // Use this for initialization
     void Start ()
     {
-        characterController = GetComponent<CharacterController>();
+
 	}
 	
 	// Update is called once per frame
