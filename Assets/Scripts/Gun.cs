@@ -36,11 +36,12 @@ public class Gun : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform launchPosition;
+    private AudioSource audioSource;
 
     // Use this to ensure it is called when an object is reused
     private void OnEnable()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Use this for initialization
@@ -74,5 +75,7 @@ public class Gun : MonoBehaviour
             bullet.transform.position = launchPosition.position;
             bullet.GetComponent<Rigidbody>().velocity = transform.parent.forward * 100;
         }
+
+        audioSource.PlayOneShot(SoundManager.Instance.gunFire);
     }
 }
