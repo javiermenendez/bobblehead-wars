@@ -60,12 +60,10 @@ public class PlayerController : MonoBehaviour
         Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         if (moveDirection == Vector3.zero)
         {
-            Debug.Log("false", bodyAnimator);
             bodyAnimator.SetBool("IsMoving", false);
         }
         else 
         {
-            Debug.Log("true", bodyAnimator);
             bodyAnimator.SetBool("IsMoving", true);
             head.AddForce(transform.right * 150, ForceMode.Acceleration);
         }
