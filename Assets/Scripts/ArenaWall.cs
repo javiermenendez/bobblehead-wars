@@ -24,7 +24,6 @@ public class ArenaWall : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject);
         arenaAnimator.SetBool("IsLowered", true);
     }
 

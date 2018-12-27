@@ -447,6 +447,11 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1793718460336910, guid: af389f68059c9fe45be9eba43c8a9412,
     type: 2}
   launchPosition: {fileID: 1580941754}
+--- !u!95 &405566260 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 9075b8c6238b8074ab40c1e7bb86fd4a,
+    type: 3}
+  m_PrefabInternal: {fileID: 1865030374}
 --- !u!1 &443544136
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,6 +880,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 4096
+  bodyAnimator: {fileID: 405566260}
 --- !u!143 &1032903425
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1578,6 +1584,10 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 9075b8c6238b8074ab40c1e7bb86fd4a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: da463801aba064fd88de91d2ea6c5f4d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9075b8c6238b8074ab40c1e7bb86fd4a, type: 3}
   m_IsPrefabAsset: 0
