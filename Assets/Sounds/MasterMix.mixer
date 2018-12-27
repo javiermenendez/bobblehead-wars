@@ -69,6 +69,7 @@ AudioMixerSnapshotController:
     9ce0e9528cab540caa9fa30dc0e4ad9c: 0.04171297
     ccbfb1f436d2d40c1bbf8d84dbc2389d: -0.02577656
     48329b7871259431d95c2de6907ea74a: -0.16685188
+    3b0559d96921e404085105893d22556e: 0.93
     e4d5abad1fb2842348be119451df266f: -0.08374829
   m_TransitionOverrides: {}
 --- !u!243 &243252560651965456
@@ -101,6 +102,7 @@ AudioMixerGroupController:
   m_Pitch: 7605370b66cb14eda8ea4a27e386e035
   m_Effects:
   - {fileID: 244875223908684316}
+  - {fileID: 244035615308634662}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -141,6 +143,35 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &244035615308634662
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: f70a1e801b03a40039a67ec3b6803d7b
+  m_EffectName: Chorus
+  m_MixLevel: 1b22c1e054ee545b19c81a9d5b3c1569
+  m_Parameters:
+  - m_ParameterName: Dry mix
+    m_GUID: f8acd22950594484bb4aca11a9292ae0
+  - m_ParameterName: Wet mix tap 1
+    m_GUID: 9566407ec41ed462aa19407e12287c9f
+  - m_ParameterName: Wet mix tap 2
+    m_GUID: c818b843c8541455e8bb308be75d647d
+  - m_ParameterName: Wet mix tap 3
+    m_GUID: 99a94cab5cbe447a69513eacdb6d384a
+  - m_ParameterName: Delay
+    m_GUID: 782db27f9ff6d4885ac3ce6b20a9dffd
+  - m_ParameterName: Rate
+    m_GUID: cf8666de2e8cf4687b3f9f8f3d8b6933
+  - m_ParameterName: Depth
+    m_GUID: 3b0559d96921e404085105893d22556e
+  - m_ParameterName: Feedback
+    m_GUID: 66c583f9a664d4b8582fee364ce2dd1c
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &244493407293207418
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
