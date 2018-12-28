@@ -33,7 +33,9 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        NoPlayerNoParty();
+        // No player, no party
+        if (player == null)
+            return;
 
         // Accumulate the amount of time that’s passed between each frame update
         currentSpawnTime += Time.deltaTime;
@@ -156,9 +158,4 @@ public class GameManager : MonoBehaviour {
         totalAliens -= 1;
     }
 
-    private void NoPlayerNoParty()
-    {
-        if (player == null)
-            return;
-    }
 }
