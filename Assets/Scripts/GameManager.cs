@@ -111,6 +111,7 @@ public class GameManager : MonoBehaviour {
                             // Rotate towards target
                             Vector3 targetRotation = new Vector3(player.transform.position.x, newAlien.transform.position.y, player.transform.position.z);
                             newAlien.transform.LookAt(targetRotation);
+                            alienScript.OnDisable.AddListener(AlienKilled);
                             #endregion Set Alien target
                         }
 
@@ -143,5 +144,12 @@ public class GameManager : MonoBehaviour {
                 SoundManager.Instance.PlayOneShot(SoundManager.Instance.powerUpAppear);
             }
         }
+    }
+
+    public void AlienKilled()
+    {
+        Debug.Log("dead alien");
+        aliensOnScreen -= 1;
+        totalAliens -= 1;
     }
 }
