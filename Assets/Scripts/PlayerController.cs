@@ -38,9 +38,16 @@ public class PlayerController : MonoBehaviour
     public Rigidbody head;
     public LayerMask layerMask;
     public Animator bodyAnimator;
+    public float[] hitForce;
+    public float timeBetweenHits = 2.5f;
+    public Rigidbody marineBody;
 
     private CharacterController characterController;
     private Vector3 currentLookTarget = Vector3.zero;
+    private bool isHit = false;
+    private float timeSinceHit = 0;
+    private int hitNumber = -1;
+    private bool isDead = false;
 
     // Use this to ensure it is called when an object is reused
     private void OnEnable()
@@ -59,6 +66,8 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         characterController.SimpleMove(moveDirection * moveSpeed);
+
+        CheckTimeBetweenHits();
     }
 
     private void FixedUpdate()
@@ -91,5 +100,72 @@ public class PlayerController : MonoBehaviour
                 transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 10.0f);
             }
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Alien alien = other.gameObject.GetComponent<Alien>();
+
+        // Check if the colliding object has an Alien script attached to it
+        if (alien != null)
+        {
+            if (!isHit)
+            {
+                // The hitNumber increases by one, after which you get a reference to CameraShake
+                hitNumber += 1;
+                CameraShake cameraShake = Camera.main.GetComponent<CameraShake>();
+                //  The hero is still alive. Shake it baby, shake it
+                if (hitNumber < hitForce.Length)
+                {
+                    cameraShake.intensity = hitForce[hitNumber];
+                    cameraShake.Shake();
+                }
+                else
+                {
+                    Die();
+                }
+
+                // This sets isHit to true, 
+                isHit = true;
+                // ...plays the grunt sound 
+                SoundManager.Instance.PlayOneShot(SoundManager.Instance.hurt);
+            }
+            // ...and kills the alien.
+            alien.Die();
+        }
+    }
+
+    private void CheckTimeBetweenHits()
+    {
+        if (isHit)
+        {
+            timeSinceHit += Time.deltaTime;
+            if (timeSinceHit > timeBetweenHits)
+            {
+                isHit = false;
+                timeSinceHit = 0;
+            }
+        }
+    }
+
+    public void Die()
+    {
+        // You don’t want a zombie
+        bodyAnimator.SetBool("IsMoving", false);
+        // Remove the current GameObject from its parent
+        marineBody.transform.parent = null;
+        // The body will drop and roll
+        marineBody.isKinematic = false;
+        marineBody.useGravity = true;
+        // Use a collider to make it work
+        marineBody.gameObject.GetComponent<CapsuleCollider>().enabled = true;
+        // Prevent firing after death
+        marineBody.gameObject.GetComponent<Gun>().enabled = false;
+        // Behead the marine
+        Destroy(head.gameObject.GetComponent<HingeJoint>());
+        head.transform.parent = null;
+        head.useGravity = true;
+        SoundManager.Instance.PlayOneShot(SoundManager.Instance.marineDeath);
+        Destroy(gameObject);
     }
 }

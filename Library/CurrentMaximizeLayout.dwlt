@@ -22,10 +22,10 @@ MonoBehaviour:
     y: 30
     width: 1440
     height: 761
-  m_MinSize: {x: 915, y: 342}
-  m_MaxSize: {x: 22010, y: 10021}
+  m_MinSize: {x: 909, y: 342}
+  m_MaxSize: {x: 22004, y: 10000}
   vertical: 0
-  controlID: 1171
+  controlID: 1462
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 342}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 1147
+  controlID: 1337
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -414,7 +414,7 @@ MonoBehaviour:
       splitSize: 6
       xOffset: 0
     m_HorizontalSplitter:
-      ID: 1153
+      ID: 1318
       splitterInitialOffset: 161
       currentActiveSplitter: -1
       realSizes: a0000000f6010000
@@ -450,8 +450,8 @@ MonoBehaviour:
     y: 394
     width: 663
     height: 367
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 2}
@@ -475,8 +475,8 @@ MonoBehaviour:
     y: 0
     width: 266
     height: 761
-  m_MinSize: {x: 204, y: 221}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 10}
   m_Panes:
   - {fileID: 10}
@@ -509,9 +509,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 0e2d0000
-    m_LastClickedID: 0
-    m_ExpandedIDs: e4fbffff00000000
+    m_SelectedIDs: 6e0dfeff
+    m_LastClickedID: -127634
+    m_ExpandedIDs: e4fbffff000000001a2f00003c2f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -553,8 +553,8 @@ MonoBehaviour:
     y: 0
     width: 234
     height: 761
-  m_MinSize: {x: 234, y: 271}
-  m_MaxSize: {x: 10004, y: 10021}
+  m_MinSize: {x: 230, y: 250}
+  m_MaxSize: {x: 10000, y: 10000}
   m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 12}
@@ -597,19 +597,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Scripts
   m_LastFoldersGridSize: 16
   m_LastProjectPath: /Users/meno/Unity_Gbt/Bobblehead Wars
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: e42c0000
-    m_LastClickedID: 11492
+    m_SelectedIDs: ac2a0000
+    m_LastClickedID: 10924
     m_ExpandedIDs: 00000000d629000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -663,9 +663,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 0e2d0000
-    m_LastClickedInstanceID: 11534
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 6e0dfeff
+    m_LastClickedInstanceID: -127634
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 420d0000f6290000de99fcff
     m_RenameOverlay:
       m_UserAcceptedRename: 0
