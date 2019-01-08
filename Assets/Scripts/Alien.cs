@@ -49,7 +49,7 @@ public class Alien : MonoBehaviour {
         OnDisable.Invoke();
         OnDisable.RemoveAllListeners();
 
-        if (deathParticles != null)
+        if (deathParticles)
         {
             deathParticles.transform.parent = null;
             deathParticles.Activate();

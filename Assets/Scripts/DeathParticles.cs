@@ -10,17 +10,18 @@ public class DeathParticles : MonoBehaviour {
     // Use this to ensure it is called when an object is reused
     private void OnEnable()
     {
-        deathParticles = GetComponent<ParticleSystem>();
+
     }
+
     // Use this for initialization
     void Start () {
-
+        deathParticles = GetComponent<ParticleSystem>();
     }
 	
     // Update is called once per frame
     void Update () {
         if (didStart && deathParticles.isStopped)
-            gameObject.SetActive(false);
+            Destroy(gameObject);
     }
 
     public void Activate()

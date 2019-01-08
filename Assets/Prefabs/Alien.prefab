@@ -552,6 +552,7 @@ GameObject:
   - component: {fileID: 4007839041296268}
   - component: {fileID: 199303979615245298}
   - component: {fileID: 198292794958703614}
+  - component: {fileID: 114798199351521470}
   m_Layer: 14
   m_Name: AlienDeathParticles
   m_TagString: Untagged
@@ -1275,6 +1276,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114798199351521470
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1839263107861064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15d25453f72d4b20b022d1ded7a1d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135947638107452990
 SphereCollider:
   m_ObjectHideFlags: 1
