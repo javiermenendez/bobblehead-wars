@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
     public GameObject[] spawnPoints;
     public GameObject alien;
     public GameObject upgradePrefab;
+    public GameObject deathFloor;
     public Gun gun;
     public float upgradeMaxTimeSpawn = 7.5f;
 
@@ -117,6 +118,7 @@ public class GameManager : MonoBehaviour {
                             Vector3 targetRotation = new Vector3(player.transform.position.x, newAlien.transform.position.y, player.transform.position.z);
                             newAlien.transform.LookAt(targetRotation);
                             alienScript.OnDisable.AddListener(AlienKilled);
+                            alienScript.GetDeathParticles().SetDeathFloor(deathFloor);
                             #endregion Set Alien target
                         }
 

@@ -12,6 +12,7 @@ public class Alien : MonoBehaviour {
 
     private NavMeshAgent agent;
     private float navigationTime = 0;
+    private DeathParticles deathParticles;
 
     // Use this to ensure it is called when an object is reused
     private void OnEnable()
@@ -47,6 +48,21 @@ public class Alien : MonoBehaviour {
     {
         OnDisable.Invoke();
         OnDisable.RemoveAllListeners();
+
+        if (deathParticles != null)
+        {
+            deathParticles.transform.parent = null;
+            deathParticles.Activate();
+        }
+
         gameObject.SetActive(false);
+    }
+
+    public DeathParticles GetDeathParticles()
+    {
+        if (deathParticles == null)
+            deathParticles = GetComponentInChildren<DeathParticles>();
+
+        return deathParticles;
     }
 }

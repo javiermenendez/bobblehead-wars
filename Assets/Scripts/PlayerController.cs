@@ -48,18 +48,20 @@ public class PlayerController : MonoBehaviour
     private float timeSinceHit = 0;
     private int hitNumber = -1;
     private bool isDead = false;
+    private DeathParticles deathParticles;
 
     // Use this to ensure it is called when an object is reused
     private void OnEnable()
     {
         characterController = GetComponent<CharacterController>();
+        deathParticles = gameObject.GetComponentInChildren<DeathParticles>();
     }
 
     // Use this for initialization
     void Start ()
     {
 
-	}
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -104,6 +106,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         Alien alien = other.gameObject.GetComponent<Alien>();
 
         // Check if the colliding object has an Alien script attached to it
@@ -119,19 +122,23 @@ public class PlayerController : MonoBehaviour
                 {
                     cameraShake.intensity = hitForce[hitNumber];
                     cameraShake.Shake();
+                    // ...plays the grunt sound 
+                    SoundManager.Instance.PlayOneShot(SoundManager.Instance.hurt);
                 }
-                else
+                else if (!isDead)
                 {
                     Die();
                 }
 
                 // This sets isHit to true, 
                 isHit = true;
-                // ...plays the grunt sound 
-                SoundManager.Instance.PlayOneShot(SoundManager.Instance.hurt);
             }
+
             // ...and kills the alien.
-            alien.Die();
+            if (!isDead)
+                alien.Die();
+            else 
+                gameObject.SetActive(false);
         }
     }
 
@@ -166,6 +173,7 @@ public class PlayerController : MonoBehaviour
         head.transform.parent = null;
         head.useGravity = true;
         SoundManager.Instance.PlayOneShot(SoundManager.Instance.marineDeath);
-        Destroy(gameObject);
+        deathParticles.Activate();
+        isDead = true;
     }
 }
